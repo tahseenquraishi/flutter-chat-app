@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: userList.length,
-                    itemBuilder: (context, index) => avatar(userList[index]['avatar']),
+                    itemBuilder: (context, index) => Avatar(avatarUrl: userList[index]['avatar']),
                   ),
                 ),
               ],
@@ -52,7 +52,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget chatElement(String avatarUrl, context, String name, String message, String time) {
+  Widget chatElement(String avatarUrl, BuildContext context, String name, String message, String time) {
     return Padding(
       padding: const EdgeInsets.only(top: 15, bottom: 15),
       child: ListTile(
@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ChatScreen()))
         },
-        leading: avatar(avatarUrl),
+        leading: Avatar(avatarUrl: avatarUrl),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,18 +75,6 @@ class Home extends StatelessWidget {
             fontSize: 14,
             overflow: TextOverflow.ellipsis),
       ),
-    );
-  }
-
-  Container avatar(String avatarUrl) {
-    return Container(
-      width: 60,
-      height: 60,
-      margin: EdgeInsets.only(right: 20),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          image:
-              DecorationImage(image: AssetImage(avatarUrl), fit: BoxFit.cover)),
     );
   }
 }

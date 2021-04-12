@@ -1,3 +1,4 @@
+import 'package:chat_app_practice_1/constant.dart';
 import 'package:chat_app_practice_1/style.dart';
 import 'package:flutter/material.dart';
 
@@ -15,28 +16,20 @@ class ChatScreen extends StatelessWidget {
 
   Container chatArea(BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height - 255,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(40)),
         child: Column(
           children: [
             Container(
-                height: MediaQuery.of(context).size.height - 355,
-                padding: EdgeInsets.only(top: 50, left: 40, right: 40),
-                child: ListView(children: [
-                  sender('hi'),
-                  receiver('hello'),
-                  sender('whats up! where are you?'),
-                  receiver(' Fine. I am in Banaglore'),
-                  sender('How is your life going man'),
-                  receiver(
-                      'Going well. I am planning to move in mumbai. let see what happen'),
-                  sender('Thats great'),
-                  receiver('Hmmm'),
-                  sender('ok'),
-                  receiver('bye'),
-                ])),
+              height: MediaQuery.of(context).size.height - 355,
+              padding: EdgeInsets.only(top: 50, left: 40, right: 40),
+              child: ListView.builder(
+                itemCount: messages.length,
+                itemBuilder: (context, index) => 
+                  messages[index]['from'] == 'sender' ? sender(messages[index]['message'], messages[index]['time']) : receiver(messages[index]['message'], messages[index]['time'])
+              ),
+            ),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: TextField(
@@ -131,17 +124,17 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  Widget sender(String message) {
+  Widget sender(String message, String time) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 25.0),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        // mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: PrimaryText(
-                text: '18:35', color: Colors.grey[400], fontSize: 14),
+                text: time, color: Colors.grey[400], fontSize: 14),
           ),
           Container(
             constraints: BoxConstraints(minWidth: 100, maxWidth: 280),
@@ -163,7 +156,7 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  Widget receiver(String message) {
+  Widget receiver(String message, String time) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 25.0),
       child: Row(
@@ -172,7 +165,7 @@ class ChatScreen extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              avatar('assets/avatar-1.png'),
+              Avatar(avatarUrl: 'assets/avatar-1.png', width: 30, height: 30),
               Container(
                 constraints: BoxConstraints(minWidth: 100, maxWidth: 200),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -194,23 +187,10 @@ class ChatScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: PrimaryText(
-                text: '18:35', color: Colors.grey[400], fontSize: 14),
+                text: time, color: Colors.grey[400], fontSize: 14),
           ),
         ],
       ),
-    );
-  }
-
-  Container avatar(String avatarUrl) {
-    return Container(
-      width: 30,
-      height: 30,
-      margin: EdgeInsets.only(right: 10),
-      decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(50),
-          image:
-              DecorationImage(image: AssetImage(avatarUrl), fit: BoxFit.cover)),
     );
   }
 }
