@@ -27,8 +27,8 @@ class Home extends StatelessWidget {
                   height: 60,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: userList.length,
-                    itemBuilder: (context, index) => Avatar(avatarUrl: userList[index]['avatar']),
+                    itemCount: avatarList.length,
+                    itemBuilder: (context, index) => Avatar(avatarUrl: avatarList[index]['avatar']),
                   ),
                 ),
               ],

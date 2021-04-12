@@ -1,3 +1,30 @@
+const avatarList = [
+  {
+    'avatar': 'assets/avatar-0.png',
+  },
+  {
+    'avatar': 'assets/avatar-1.png',
+  },
+  {
+    'avatar': 'assets/avatar-2.png',
+  },
+  {
+    'avatar': 'assets/avatar-3.png',
+  },
+  {
+    'avatar': 'assets/avatar-4.png',
+  },
+  {
+    'avatar': 'assets/avatar-5.png',
+  },
+  {
+    'avatar': 'assets/avatar-1.png',
+  },
+  {
+    'avatar': 'assets/avatar-2.png',
+  },
+];
+
 const userList = [
   {
     'avatar': 'assets/avatar-1.png',
