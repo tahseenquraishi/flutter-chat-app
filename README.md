@@ -1,4 +1,5 @@
-# chat_app_practice_1
+# Flutter Chat App<img width="1052" alt="Screenshot 2021-04-07 at 5 34 07 PM" src="https://user-images.githubusercontent.com/28984101/114362224-bb040500-9b94-11eb-8dbd-d3d733b3bdeb.png">
+
 
 A new Flutter project.
 
